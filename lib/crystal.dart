@@ -1,3 +1,7 @@
+/**
+ * A tool for keeping your canvas elements crisp in the world of dynamically
+ * changing DPIs.
+ */
 library crystal;
 
 import 'dart:async';
