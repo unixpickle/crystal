@@ -16,6 +16,8 @@ abstract class ScalableCanvas {
       : dpiMonitor = (monitor == null ? new DpiMonitor() : monitor) {
     canvas.style.width = '${width}px';
     canvas.style.height = '${height}px';
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
     _sub = dpiMonitor.onChange.listen((_) => scale());
   }
   
