@@ -20,7 +20,7 @@ class DprMonitor implements DpiMonitor {
   
   factory DprMonitor() {
     if (_gDprMonitor == null) {
-      _gDprMonitor = new DprMonitor();
+      _gDprMonitor = new DprMonitor._();
     }
     return _gDprMonitor;
   }
