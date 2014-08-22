@@ -11,7 +11,9 @@ abstract class ScalableCanvas {
   
   StreamSubscription _sub;
   
-  ScalableCanvas(this.canvas, this.width, this.height, this.dpiMonitor) {
+  ScalableCanvas(this.canvas, this.width, this.height,
+                {DpiMonitor monitor: null})
+      : dpiMonitor = (monitor == null ? new DpiMonitor() : monitor) {
     canvas.style.width = '${width}px';
     canvas.style.height = '${height}px';
     _sub = dpiMonitor.onChange.listen((_) => scale());
