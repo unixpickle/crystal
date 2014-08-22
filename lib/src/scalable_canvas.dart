@@ -8,6 +8,7 @@ abstract class ScalableCanvas {
   
   int get canvasWidth => (dpiMonitor.pixelRatio * width).round();
   int get canvasHeight => (dpiMonitor.pixelRatio * height).round();
+  double get pixelRatio => dpiMonitor.pixelRatio;
   
   StreamSubscription _sub;
   
