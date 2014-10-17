@@ -47,12 +47,18 @@ abstract class ScalableCanvas {
   /**
    * Create an instance that governs [canvas] at the size [width] x [height].
    * 
+   * If [width] and [height] are not specified, the value will be derived by
+   * reading the current size of the canvas.
+   * 
    * You may optionally specify your own [monitor]. If you do not, the default
    * [DpiMonitor] will be used.
    */
-  ScalableCanvas(this.canvas, this.width, this.height,
-                {DpiMonitor monitor: null})
-      : dpiMonitor = (monitor == null ? new DpiMonitor() : monitor) {
+  ScalableCanvas(CanvasElement canvas, {int width: -1, int height: -1,
+                 DpiMonitor monitor: null})
+      : canvas = canvas,
+        width = (width < 0 ? canvas.width : width),
+        height = (height < 0 ? canvas.height : height),
+        dpiMonitor = (monitor == null ? new DpiMonitor() : monitor) {
     canvas.style.width = '${width}px';
     canvas.style.height = '${height}px';
     canvas.width = canvasWidth;
