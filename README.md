@@ -4,21 +4,20 @@ Keep your `<canvas>` elements crystal clear by automatically resizing them. But 
 
 ## Dart version
 
-This used to be a Dart project. You can view that on [a separate branch](https://github.com/unixpickle/crystal/tree/dart-version).
+This used to be a Dart project. You can view that on [a separate branch](https://github.com/unixpickle/crystal/tree/dart-version) or [on Pub](https://pub.dartlang.org/packages/crystal).
 
 ## Catching DPI changes
 
-When someone drags a browser between displays with different DPIs, or when they zoom in or out on a mobile device, the effective DPI of your web page changes. The `DpiMonitor` makes it easy to track DPI changes in a cross-platform way. Here is the usage:
+When someone drags a browser between displays with different DPIs, or when they zoom in or out on a mobile device, the effective DPI of your web page changes. The crystal API makes this easy to deal with:
 
 ```javascript
-var monitor = new window.crystal.DpiMonitor();
-console.log('initial device pixel ration ' + monitor.getPixelRatio());
-monitor.addListener(function() {
-    console.log('new pixel ration ' + monitor.getPixelRatio());
+console.log('pixel ratio = ' + window.crystal.getRatio());
+window.crystal.addListener(function() {
+    console.log('pixel ratio = ' + window.crystal.getRatio());
 });
 ```
 
-From there on out, you should only use the monitor's `getPixelRatio()` method to determine the device's pixel ratio. You should not use `window.devicePixelRatio` since it may not report changes due to zooming or rotations, and may be out of sync with the value in the `DpiMonitor`.
+You should not use `window.devicePixelRatio` in conjunction with crystal since it may not report changes due to zooming or rotations.
 
 # License
 
