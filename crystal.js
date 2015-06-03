@@ -9,7 +9,7 @@
   
   function calculateRatio() {
     // TODO: here, do something to detect browser zoom.
-    return window.devicePixelRatio;
+    return window.devicePixelRatio || 1;
   }
   
   function getRatio() {
